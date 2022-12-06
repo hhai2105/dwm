@@ -49,10 +49,10 @@ static const Layout layouts[] = {
 #define AltMask Mod1Mask
 
 #define TAGKEYS(KEY,TAG)												\
-	&((Keychord){1, {{MODKEY, KEY}},								view,           {.ui = 1 << TAG} }), \
-		&((Keychord){1, {{MODKEY|ControlMask, KEY}},					toggleview,     {.ui = 1 << TAG} }), \
-		&((Keychord){1, {{MODKEY|ShiftMask, KEY}},						tag,            {.ui = 1 << TAG} }), \
-		&((Keychord){1, {{MODKEY|ControlMask|ShiftMask, KEY}},			toggletag,      {.ui = 1 << TAG} }),
+	&((Keychord){1, {{WindowMask, KEY}},								view,           {.ui = 1 << TAG} }), \
+		&((Keychord){1, {{WindowMask|ControlMask, KEY}},					toggleview,     {.ui = 1 << TAG} }), \
+		&((Keychord){1, {{WindowMask|ShiftMask, KEY}},						tag,            {.ui = 1 << TAG} }), \
+		&((Keychord){1, {{WindowMask|ControlMask|ShiftMask, KEY}},			toggletag,      {.ui = 1 << TAG} }),
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -171,12 +171,12 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkClientWin,         WindowMask,         Button1,        movemouse,      {0} },
+	{ ClkClientWin,         WindowMask,         Button2,        togglefloating, {0} },
+	{ ClkClientWin,         WindowMask,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkTagBar,            WindowMask,         Button1,        tag,            {0} },
+	{ ClkTagBar,            WindowMask,         Button3,        toggletag,      {0} },
 };
 
